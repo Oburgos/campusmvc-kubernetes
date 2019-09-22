@@ -1,0 +1,9 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: mysql-pvc-volume
+spec:
+  storageClassName: manual
+  resources:
+    requests:
+      storage: 10Gi

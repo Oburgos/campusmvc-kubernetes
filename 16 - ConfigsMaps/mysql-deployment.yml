@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mysql-wp-configmap
+spec:
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        component: mysql
+    spec:
+      volumes:
+        - name: mysql-volume
+          persistentVolumeClaim:
+            claimName: mysql-pvc-volume
+      containers:
+        - name: mysql 
+          image: mysql:8
+          imagePullPolicy: Always
+          volumeMounts:
+            - mountPath: "/var/lib/mysql"
+              name: mysql-volume
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: my-wordpress-app-config
+                  key: mysql_password
+            - name: MYSQL_DATABASE
+              valueFrom:
+                configMapKeyRef:
+                  name: my-wordpress-app-config
+                  key: mysql_database
+            - name: MYSQL_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: my-wordpress-app-config
+                  key: mysql_user
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: my-wordpress-app-config
+                  key: mysql_password
+                

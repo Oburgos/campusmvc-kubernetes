@@ -1,0 +1,12 @@
+kind: PersistentVolume
+version: v1
+metadata:
+  name: mysql-pv-volume
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 10Gi
+  accessMode:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/mysql-wp-data"

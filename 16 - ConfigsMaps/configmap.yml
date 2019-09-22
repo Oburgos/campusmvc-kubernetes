@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-wordpress-app-config
+  labels:
+    app: wordpress
+data:
+  mysql_password: "#%!msql"
+  mysql_database: "campusmvp_wordpress"
+  mysql_user: "root"
