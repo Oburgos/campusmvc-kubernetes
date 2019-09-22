@@ -1,0 +1,2 @@
+kubectl create secret generic nombre-secret --from-literal clave1=valor1 --from-literal clave2=valor2
+kubectl create secret generic nombre-secret --from-file archivo.txt
